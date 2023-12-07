@@ -11,53 +11,34 @@ void main() {
   );
 }
 
-class MyAppState extends ChangeNotifier {
-  bool darkMode = false;
-
-  void toggleTheme() {
-    darkMode = !darkMode;
-    notifyListeners();
-  }
-}
+class MyAppState extends ChangeNotifier {}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var appState = Provider.of<MyAppState>(context);
-    var darkMode = appState.darkMode;
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.orange,
-          brightness: darkMode ? Brightness.dark : Brightness.light,
+          brightness: Brightness.light,
         ),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'N2N Client'),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text("N2N Client"),
       ),
       body: Center(
         child: buildN2NNodeCard(),
