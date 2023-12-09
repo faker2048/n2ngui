@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:namer_app/n2n_node_card.dart';
 import 'package:provider/provider.dart';
 
+import 'login.dart';
+
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => MyAppState(),
-      child: const MyApp(),
-    ),
+    MyApp(),
   );
 }
 
@@ -20,14 +19,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.orange,
-          brightness: Brightness.light,
-        ),
-        useMaterial3: true,
-      ),
-      home: MyHomePage(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => const ConnectToN2nPage(),
+        '/': (context) => MyHomePage(),
+      },
+      theme: ThemeData.light(useMaterial3: true),
     );
   }
 }
