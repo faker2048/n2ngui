@@ -35,16 +35,11 @@ class N2NNodeCard extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.computer),
               title: Text(alias.isEmpty ? 'No Alias' : alias),
-              // subtitle: Text('IP: $ipAddress\nLatency: $latency ms'),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Text('IP: $ipAddress'),
-                  // instead with wifi icon + text
                   SizedBox(height: 5),
                   TextIcon(icon: Icon(Icons.wifi), text: Text(ipAddress)),
-                  // Text('Latency: $latency ms'),
-                  // instead with latency icon + text
                   SizedBox(height: 5),
                   TextIcon(icon: Icon(Icons.cloud), text: Text('$latency ms')),
                 ],
